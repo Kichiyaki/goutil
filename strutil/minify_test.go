@@ -24,7 +24,7 @@ test
 		},
 	}
 	for _, singleTest := range tests {
-		result := Minify(singleTest.data)
+		result := Minify(singleTest.data, " ")
 		if result != singleTest.expectedResult {
 			t.Errorf("expected %v, got %v", singleTest.expectedResult, result)
 		}
