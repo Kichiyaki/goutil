@@ -20,9 +20,17 @@ func TestPascalCase(t *testing.T) {
 			data:           "test_id",
 			expectedResult: "TestId",
 		},
+		{
+			data:           "test.id",
+			expectedResult: "TestId",
+		},
+		{
+			data:           "test.id_test",
+			expectedResult: "TestIdTest",
+		},
 	}
 	for _, singleTest := range tests {
-		result := PascalCase(singleTest.data, '_')
+		result := PascalCase(singleTest.data, '_', '.')
 		if result != singleTest.expectedResult {
 			t.Errorf("expected %s, got %s", singleTest.expectedResult, result)
 		}

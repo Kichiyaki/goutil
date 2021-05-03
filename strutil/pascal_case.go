@@ -4,13 +4,17 @@ import (
 	"unicode"
 )
 
-func PascalCase(s string, sep rune) string {
+func PascalCase(s string, separators ...rune) string {
 	n := ""
 	upperNext := true
+
+loop:
 	for _, c := range s {
-		if c == sep {
-			upperNext = true
-			continue
+		for _, sep := range separators {
+			if c == sep {
+				upperNext = true
+				continue loop
+			}
 		}
 		if upperNext {
 			if unicode.IsLower(c) {
