@@ -18,11 +18,8 @@ func GetenvInt(key string) int {
 }
 
 func GetenvBool(key string) bool {
-	str := GetenvString(key)
-	if str == "" {
-		return false
-	}
-	return str == "true" || str == "1"
+	b, _ := strconv.ParseBool(GetenvString(key))
+	return b
 }
 
 func GetenvString(key string) string {
